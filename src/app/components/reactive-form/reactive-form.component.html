@@ -1,0 +1,13 @@
+<p>reactive-form works!</p>
+<form [formGroup]="myForm" (ngSubmit)="submit()">
+    <input name="name" formControlName="userName">
+    <input name="email" formControlName="userEmail">
+    <div class="alert alert-danger"
+        *ngIf="myForm.controls['userEmail'].invalid && myForm.controls['userEmail'].touched">
+    Некорректный email
+</div>
+    <input name="phone" formControlName="userPhone">
+    <button [disabled]="myForm.invalid">
+        Отправить
+    </button>
+</form>

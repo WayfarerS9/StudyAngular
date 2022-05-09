@@ -1,0 +1,8 @@
+<p>Bindings works!</p>
+<button mat-stroked-button (click)="clear()">Press me for clear</button><br>
+<button mat-stroked-button (click)="addPetr()">Press me for add Petr</button><br>
+<mat-form-field class="example-full-width" appearance="fill">
+  <mat-label>Try to input something</mat-label>
+  <input matInput placeholder="Example" [ngModel]="username">
+</mat-form-field>
+<h3>{{username}}</h3>

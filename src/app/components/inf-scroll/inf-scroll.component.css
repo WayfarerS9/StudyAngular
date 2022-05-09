@@ -1,0 +1,13 @@
+.boxes {
+    height: 20vh;
+    width: 44vw;
+    background-color: rgb(23, 135, 255);
+    margin-bottom: 2px;
+  }
+  
+  .container {
+
+    height: 100%;
+    width: 100%;
+    
+  }

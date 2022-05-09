@@ -1,0 +1,32 @@
+<h2 appDirectiveWithGetArg="green">Пример создания директивы, меняющей цвет цели на определенный директивой</h2>
+<p appIndigoColor>Абзац с директивой appIndigoColor</p>
+<p appRedColor>Абзац с директивой appRedColor</p>
+<p>Абзац без директивы</p>
+<br>
+<hr>
+<h2 appDirectiveWithGetArg="green">Пример создания директивы, меняющей цвет цели при наведении</h2>
+<p appEventDirectives>Абзац с директивой appEventDirectives. При наведении цвет будет изменен</p>
+<br>
+<hr>
+<h2 appDirectiveWithGetArg="green">Пример создания директивы, меняющей цвет цели на указанное значение в шаблоне</h2>
+<p appDirectiveWithGetArg="orange">Абзац с директивой appDirectiveWithGetArg. Цвет изменен на указанное значение в шаблоне</p>
+<br>
+<hr>
+<h2 appDirectiveWithGetArg="green">Пример создания директивы, добавляющей теги в определенном кол-ве и с определенным содержанием</h2>
+<div appAddElements message="Создан при помощи диррективы, указанной атрибутом" count='5'></div>
+<br>
+<appAddElements message="Создан при помощи диррективы, указанной тегом" count='3'></appAddElements>
+<br>
+<hr>
+<h2 appDirectiveWithGetArg="green">Пример создания директивы, обрабатывающей клик на кнопку</h2>
+<button [appConfirmAction]="getAccess">Click to get permission</button>
+<br>
+<br>
+<hr>
+<h2 appDirectiveWithGetArg="green">Пример создания директивы, обрабатывающей объект события</h2>
+<div style="width: 250px; height: 250px; background-color:rgb(87, 138, 255)" appEventPass></div>
+<br>
+<hr>
+<h2 appDirectiveWithGetArg="green">Пример создания директивы, приявызвающей класс в зависимости от события</h2>
+<div appClassBinding>Click me</div>
+<p appClassBinding>Click me</p>

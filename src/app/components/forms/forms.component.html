@@ -1,0 +1,31 @@
+<p>forms works!</p>
+<form #myForm="ngForm" novalidate (ngSubmit)="onSubmit(myForm)">
+    <div >
+        <label>Имя</label>
+        <input name="name" required [(ngModel)]="name" >
+    </div>
+
+    <div >
+        <label>Email</label>
+        <input name="email" required email [(ngModel)]="email" #emailPers="ngModel">
+    </div>
+
+    <div>
+        <label>Company</label>
+        <select class="form-control" name="company" [(ngModel)]="company" #phoneCompany="ngModel">
+            <option  *ngFor="let comp of companies">
+                {{comp}}
+            </option>
+        </select>
+    </div>
+
+    <div >
+        <button [disabled]="myForm.invalid"
+            type="submit(myForm)">Сабмит
+        </button>
+    </div>
+</form>
+
+<div>Имя: {{name}}</div>
+<div>Email: {{email}}</div>
+<div>Company: {{company}}</div>

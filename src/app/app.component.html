@@ -1,0 +1,35 @@
+
+<mat-toolbar class="mat-elevation-z8">
+    <button
+      mat-icon-button
+      *ngIf="sidenav.mode === 'over'"
+      (click)="sidenav.toggle()"
+    >
+      <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+      <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+    </button>
+    Responsive side navigation
+  </mat-toolbar>
+  
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+      <div class="container">
+        <div class="row">
+          <!-- Для задания ссылок кнопке активного маршрута, нужно напивать атрибут routerLinkActive="active" и задать стили классу .active -->
+          <button class="col-12" mat-raised-button color="primary" routerLinkActive="active" routerLink="autocomplete">Autocomplete</button>
+          <button class="col-12" mat-raised-button color="primary" routerLinkActive="active" routerLink="bindings">Bindings</button>
+          <button class="col-12" mat-raised-button color="primary" routerLinkActive="active" routerLink="forms">Forms</button>
+          <button class="col-12" mat-raised-button color="primary" routerLinkActive="active" routerLink="reactiveForm">Reactive Form</button>
+          <button class="col-12" mat-raised-button color="primary" routerLinkActive="active" routerLink="infinityScroll">Infinty scroll</button>
+          <button class="col-12" mat-raised-button color="primary" routerLinkActive="active" routerLink="directive">Custom Directives</button>
+          <button class="col-12" mat-raised-button color="primary" routerLinkActive="active" routerLink="busyButton">Busy Button</button>
+          <button class="col-12" mat-raised-button color="primary" routerLinkActive="active" routerLink="valueProp">ValueProp</button>
+        </div>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="content mat-elevation-z8">
+        <router-outlet></router-outlet> <!-- Вывод элементов, переход по которым осуществляется при помощи роутинга -->
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
