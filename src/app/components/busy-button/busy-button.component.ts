@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./busy-button.component.css']
 })
 export class BusyButtonComponent implements OnInit {
-  isDwnl: any = false
+  isDwnl = false;
   
   constructor() { }
 

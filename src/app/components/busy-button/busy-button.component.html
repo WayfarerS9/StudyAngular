@@ -1,21 +1,23 @@
-<button mat-raised-button color="primary" [appBusyButton]="isDwnl" (click)="getData()">
-    <span>
-        NameOfButton
-    </span>    
-    <mat-icon style="display: none" >
-        <mat-spinner color="accent" diameter="20"></mat-spinner>
-    </mat-icon>
+<button mat-raised-button [disabled]="isDwnl" color="primary" *appBusyButton="isDwnl" (click)="getData()">
+    NameOfButton    
 </button>
-<!-- 
+
+
+
+
+
+
 <br>
 <br>
 <br>
-<button mat-raised-button color="primary" appBusyButton>
+<button mat-raised-button color="primary">
     NameOfButton
     <mat-icon>
         <mat-spinner color="accent" diameter="20"></mat-spinner>
     </mat-icon>
 </button>
+<!-- 
+
 <p>Example of spinner</p>
 <mat-icon>
     <mat-spinner color="accent" diameter="20"></mat-spinner>

@@ -1,31 +1,124 @@
-import { Directive, ElementRef, Input, Renderer2, HostListener, DoCheck, KeyValueDiffers, KeyValueDiffer } from '@angular/core';
-
+import { Directive, ElementRef, Input, Renderer2, HostListener, DoCheck, KeyValueDiffers, KeyValueDiffer, ComponentFactoryResolver, TemplateRef, ViewContainerRef } from '@angular/core';
+import { ThemePalette } from '@angular/material/core';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
 @Directive({
   selector: '[appBusyButton]'
 })
 export class BusyButtonDirective {
+  #color: ThemePalette = 'accent';
+  #diameter: number = 18;
+  #isSpinning: boolean | null = null; 
+  #spinner: MatProgressSpinner | null = null;
 
-  @Input('appBusyButton')
-  isDwnl;
+  constructor(
+    private elementRef: ElementRef,
+    private renderer: Renderer2,
+    private differs: KeyValueDiffers,
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private templateRef: TemplateRef<any>,
+    private viewContainer: ViewContainerRef
+    ) {}
+
+
+  @Input() set appBusyButton(condition: boolean) {
+    if (!!condition !== this.#isSpinning) {
+      this.#spinner = null;
+      
+/*        */
   
-  constructor(private elementRef: ElementRef, private renderer: Renderer2, private differs: KeyValueDiffers) {
-    this.isDwnl = this.differs.find({}).create();
+      console.log(this.viewContainer)
 
+      this.viewContainer.clear();
+      this.#isSpinning = condition;
+      if (!condition) {
+        // Render the template
+        this.viewContainer.createEmbeddedView(this.templateRef);
+        console.log(this.templateRef.elementRef.nativeElement)
+
+      } else if (condition) {
+        /*  */
+
+        
+        this.addSpinner();
+      }
+    }
   }
 
+  private addSpinner() {
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(MatProgressSpinner);
+    const { instance } = this.viewContainer.createComponent<MatProgressSpinner>(componentFactory);
+    instance.diameter = this.#diameter;
+    instance.color = this.#color;
+    instance.mode = 'indeterminate';
+    instance._elementRef.nativeElement.classList.add('spin-on-instance');
+    this.#spinner = instance;
+  }
+}
 
 
-  @HostListener('click') onBusy() {
+/* ДОП УСЛОВИЯ */
+
+  /*   @Input()
+  set appSpinOnColor(color: ThemePalette) {
+    this.#color = color;
+    if (this.#spinner) {
+      this.#spinner.color = color;
+    }
+  } */
+
+/*   @Input()
+  set appSpinOnDiameter(diameter: number) {
+    this.#diameter = diameter;
+    if (this.#spinner) {
+      this.#spinner.diameter = diameter;
+    }
+  } */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*   @HostListener('click') onBusy() { */
 
 /*     this.renderer.setStyle(this.elementRef.nativeElement, 'width', window.getComputedStyle(this.elementRef.nativeElement).width);
     this.renderer.setStyle(this.elementRef.nativeElement, 'height', window.getComputedStyle(this.elementRef.nativeElement).height);
     this.renderer.setProperty(this.elementRef.nativeElement, 'innerText', ''); */    
-  }
-  
 
-
-}
 
 
 
