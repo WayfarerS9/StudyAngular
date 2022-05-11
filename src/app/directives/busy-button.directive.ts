@@ -1,6 +1,20 @@
-import { Directive, ElementRef, Input, Renderer2, HostListener, DoCheck, KeyValueDiffers, KeyValueDiffer, ComponentFactoryResolver, TemplateRef, ViewContainerRef } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {
+  ComponentFactoryResolver,
+  Directive,
+  ElementRef,
+  Input,
+  NgModule,
+  Renderer2,
+  TemplateRef,
+  ViewContainerRef,
+} from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
-import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import {
+  MatProgressSpinner,
+  MatProgressSpinnerModule,
+} from '@angular/material/progress-spinner';
+import { BrowserModule } from '@angular/platform-browser';
 
 @Directive({
   selector: '[appBusyButton]'
@@ -12,34 +26,41 @@ export class BusyButtonDirective {
   #spinner: MatProgressSpinner | null = null;
 
   constructor(
-    private elementRef: ElementRef,
-    private renderer: Renderer2,
-    private differs: KeyValueDiffers,
     private componentFactoryResolver: ComponentFactoryResolver,
     private templateRef: TemplateRef<any>,
-    private viewContainer: ViewContainerRef
+    private viewContainer: ViewContainerRef,
+    private renderer: Renderer2,
+    private elementRef: ElementRef
     ) {}
 
+    @Input()
+    set appSpinOnColor(color: ThemePalette) {
+      this.#color = color;
+      if (this.#spinner) {
+        this.#spinner.color = color;
+      }
+    }
+  
+    @Input()
+    set appSpinOnDiameter(diameter: number) {
+      this.#diameter = diameter;
+      if (this.#spinner) {
+        this.#spinner.diameter = diameter;
+      }
+    }
 
   @Input() set appBusyButton(condition: boolean) {
     if (!!condition !== this.#isSpinning) {
-      this.#spinner = null;
-      
-/*        */
-  
-      console.log(this.viewContainer)
-
+      this.#spinner = null;      
       this.viewContainer.clear();
       this.#isSpinning = condition;
       if (!condition) {
-        // Render the template
+        this.renderer.setStyle(this.elementRef.nativeElement.parentElement.parentElement, 'width', 'auto');
+        this.renderer.setStyle(this.elementRef.nativeElement.parentElement.parentElement, 'height', 'auto');        
         this.viewContainer.createEmbeddedView(this.templateRef);
-        console.log(this.templateRef.elementRef.nativeElement)
-
       } else if (condition) {
-        /*  */
-
-        
+        this.renderer.setStyle(this.elementRef.nativeElement.parentElement.parentElement, 'width', window.getComputedStyle(this.elementRef.nativeElement.parentElement.parentElement).width);
+        this.renderer.setStyle(this.elementRef.nativeElement.parentElement.parentElement, 'height', window.getComputedStyle(this.elementRef.nativeElement.parentElement.parentElement).height);
         this.addSpinner();
       }
     }
@@ -52,58 +73,9 @@ export class BusyButtonDirective {
     instance.color = this.#color;
     instance.mode = 'indeterminate';
     instance._elementRef.nativeElement.classList.add('spin-on-instance');
-    this.#spinner = instance;
+    this.#spinner = instance;    
   }
 }
-
-
-/* ДОП УСЛОВИЯ */
-
-  /*   @Input()
-  set appSpinOnColor(color: ThemePalette) {
-    this.#color = color;
-    if (this.#spinner) {
-      this.#spinner.color = color;
-    }
-  } */
-
-/*   @Input()
-  set appSpinOnDiameter(diameter: number) {
-    this.#diameter = diameter;
-    if (this.#spinner) {
-      this.#spinner.diameter = diameter;
-    }
-  } */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -115,8 +87,7 @@ export class BusyButtonDirective {
 
 /*   @HostListener('click') onBusy() { */
 
-/*     this.renderer.setStyle(this.elementRef.nativeElement, 'width', window.getComputedStyle(this.elementRef.nativeElement).width);
-    this.renderer.setStyle(this.elementRef.nativeElement, 'height', window.getComputedStyle(this.elementRef.nativeElement).height);
+/*     
     this.renderer.setProperty(this.elementRef.nativeElement, 'innerText', ''); */    
 
 

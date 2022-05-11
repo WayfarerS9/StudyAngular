@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { delay, of } from 'rxjs';
 
 @Component({
   selector: 'app-busy-button',
@@ -11,21 +12,12 @@ export class BusyButtonComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-  }
-  
+  }  
 
   getData() {
     this.isDwnl = true
-    setTimeout(() => {
-      console.log('Данные получены');   
-      this.isDwnl = false
-    }, 2000)
+    of({})
+      .pipe(delay(2000))
+      .subscribe(() => (this.isDwnl = false));
   }
-
-
-
-
-
 }
-
-
