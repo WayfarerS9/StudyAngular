@@ -1,20 +1,14 @@
-import { CommonModule } from '@angular/common';
 import {
   ComponentFactoryResolver,
   Directive,
   ElementRef,
   Input,
-  NgModule,
   Renderer2,
   TemplateRef,
   ViewContainerRef,
 } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
-import {
-  MatProgressSpinner,
-  MatProgressSpinnerModule,
-} from '@angular/material/progress-spinner';
-import { BrowserModule } from '@angular/platform-browser';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
 @Directive({
   selector: '[appBusyButton]'

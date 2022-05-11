@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { delay, of } from 'rxjs';
 
 @Component({
@@ -21,3 +21,14 @@ export class BusyButtonComponent implements OnInit {
       .subscribe(() => (this.isDwnl = false));
   }
 }
+
+/* Для реактивного прослушивания изменений @Input (подходит только для инпута),
+можно воспользоваться хуком:
+
+@Input() mode;
+ngOnChanges(changes: SimpleChanges) {
+  if (changes.mode.currentValue === 'determinate') {
+    this.isBusyFind = false;
+    this.isBusyReset = false;
+  }
+} */
