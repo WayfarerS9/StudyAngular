@@ -1,0 +1,11 @@
+.border {
+    border: indigo 5px solid;
+}
+
+.background {
+    background-color: rgb(109, 164, 253);
+}
+
+.fontColor {
+    color: greenyellow
+}

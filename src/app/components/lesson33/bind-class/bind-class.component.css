@@ -1,0 +1,19 @@
+.border {
+    border: indigo 30px solid;
+}
+
+.background {
+    background-color: rgb(109, 164, 253);
+}
+
+.fontColor {
+    color: greenyellow
+}
+
+.isRed {
+    background-color: red;
+}
+
+.isBlue {
+    background-color: blue;
+}

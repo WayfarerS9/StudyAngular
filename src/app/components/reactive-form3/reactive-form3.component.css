@@ -1,0 +1,6 @@
+.download {
+    position: absolute;
+    right: 0;
+    height: 30px;
+    transform: translate(-5%, calc(-100% - 15px));
+}

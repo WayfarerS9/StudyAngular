@@ -1,0 +1,12 @@
+<div
+class="background"
+    [class.border]="isBorder"
+    [class.background]="isBackground"
+    [class.fontColor]="isFontColor"
+    [ngClass]="{'isRed': itsRed, 'isBlue': itsBlue}"
+>Экспериментальный абзац, к которому применен класс: {{currentClass}}</div>
+<button (click)="addBorder()">Add Border</button>
+<button (click)="addBackground()">Add Background</button>
+<button (click)="addFontColor()">Add FontColor</button>
+<br>
+<button (click)="toggleClasse()">Toggle boolean of properties itsRed and itsBlue</button>

@@ -1,0 +1,8 @@
+<button mat-stroked-button (click)="toBindClass()">Bind Class</button>
+<button mat-stroked-button (click)="toBindStyle()">Bind Style</button>
+<button mat-stroked-button (click)="toNgmod()">NgModel</button>
+<button mat-stroked-button (click)="toNgIf()">NgIf</button>
+<app-bind-class *ngIf="bindClass"></app-bind-class>
+<app-bind-style *ngIf="bindStyle"></app-bind-style>
+<app-ng-model *ngIf="ngmod"></app-ng-model>
+<app-ng-if *ngIf="ngIf"></app-ng-if>

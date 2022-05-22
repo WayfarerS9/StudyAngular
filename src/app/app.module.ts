@@ -36,7 +36,17 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BusyButtonDirective } from './directives/busy-button.directive';
 import { ValuePropMainComponent } from './components/valueProp/value-prop-main/value-prop-main.component';
 import { ValuePropIntermediaryComponent } from './components/valueProp/value-prop-intermediary/value-prop-intermediary.component';
-
+import { Lesson33Component } from './components/lesson33/lesson33.component';
+import { BindClassComponent } from './components/lesson33/bind-class/bind-class.component';
+import { BindStyleComponent } from './components/lesson33/bind-style/bind-style.component';
+import { NgModelComponent } from './components/lesson33/ng-model/ng-model.component';
+import { Lesson32Component } from './components/lesson32/lesson32.component';
+import { TimersComponent } from './components/lesson32/timers/timers.component';
+import { GetSetComponent } from './components/lesson32/get-set/get-set.component';
+import { SpoilerComponent } from './components/lesson32/spoiler/spoiler.component';
+import { NgIfComponent } from './components/lesson33/ng-if/ng-if.component';
+import { ReactiveForm2Component } from './components/reactive-form2/reactive-form2.component';
+import { ReactiveForm3Component } from './components/reactive-form3/reactive-form3.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +69,17 @@ import { ValuePropIntermediaryComponent } from './components/valueProp/value-pro
     BusyButtonDirective,
     ValuePropMainComponent,
     ValuePropIntermediaryComponent,
+    Lesson33Component,
+    BindClassComponent,
+    BindStyleComponent,
+    NgModelComponent,
+    Lesson32Component,
+    TimersComponent,
+    GetSetComponent,
+    SpoilerComponent,
+    NgIfComponent,
+    ReactiveForm2Component,
+    ReactiveForm3Component,
   ],
   imports: [
     BrowserModule,

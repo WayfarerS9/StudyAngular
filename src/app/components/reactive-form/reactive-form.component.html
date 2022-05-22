@@ -1,13 +1,49 @@
-<p>reactive-form works!</p>
-<form [formGroup]="myForm" (ngSubmit)="submit()">
-    <input name="name" formControlName="userName">
-    <input name="email" formControlName="userEmail">
-    <div class="alert alert-danger"
-        *ngIf="myForm.controls['userEmail'].invalid && myForm.controls['userEmail'].touched">
-    Некорректный email
-</div>
-    <input name="phone" formControlName="userPhone">
-    <button [disabled]="myForm.invalid">
-        Отправить
-    </button>
+<h1>Reactive form</h1>
+
+<form (submit)="onSubmit()" [formGroup]="userForm" novalidate>
+  <div class="mb-3">
+    <label for="userName" class="form-label">Name: </label>
+    <input      
+      type="text"
+      class="form-control"
+      id="userName"
+      formControlName="userName"      
+    />
+  </div>
+  <div class="alert alert-danger"
+    *ngIf="this.userForm.get('userName')?.hasError('required') &&
+      (this.userForm.get('userName')?.touched ||
+      this.userForm.get('userName')?.dirty)">
+    Обязательное поле
+  </div>
+
+  <div class="mb-3">
+    <label for="password" class="form-label">Password: </label>
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      formControlName="password"
+      minlength="10"
+      value="John" 
+    /><!-- Дефолтное значение через value в реактивной форме не работает, его нужно задавать в TS, в конструкторе New FormControl -->
+  </div>
+  
+    <div
+      class="alert alert-danger"
+      *ngIf="userForm.get('password')?.hasError('required') &&
+        (userForm.get('password')?.touched ||
+        userForm.get('password')?.dirty)">
+      Обязательное поле
+    </div>
+    <div
+      class="alert alert-danger"
+      *ngIf="this.userForm.get('password')?.hasError('minlength') &&
+        (userForm.get('password')?.touched ||
+        userForm.get('password')?.dirty)"
+    >Требуется минимум 10 символов</div>
+  
+
+  <button type="submit">Submit</button>
+
 </form>

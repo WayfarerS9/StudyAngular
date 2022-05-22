@@ -1,0 +1,140 @@
+<h1>Reactive form 3, Native Validation</h1>
+<div class="row">
+  <form (submit)="onSubmit()" [formGroup]="userForm" novalidate>
+
+
+    <div class="mb-3 col-6">
+      <label for="firstName" class="form-label">Name: </label>
+      <input      
+        type="text"
+        class="form-control"
+        id="firstName"
+        formControlName="userFirstName"  
+        placeholder="Name"    
+      />
+      <div class="alert alert-danger"
+        *ngIf="userForm.get('userFirstName')?.invalid &&
+        userForm.get('userFirstName')?.touched &&
+        userForm.get('userFirstName')?.errors?.['required']">
+        Имя обязательно
+      </div>
+      <div class="alert alert-danger"
+        *ngIf="userForm.get('userFirstName')?.invalid &&
+        userForm.get('userFirstName')?.touched &&
+        userForm.get('userFirstName')?.errors?.['minlength']">
+        Имя должно содержать не менее 4 символов
+      </div>
+      <div class="alert alert-danger"
+        *ngIf="userForm.get('userFirstName')?.invalid &&
+        userForm.get('userFirstName')?.touched &&
+        userForm.get('userFirstName')?.errors?.['maxlength']">
+        Имя должно содержать не более 15 символов
+      </div>
+    </div>
+
+
+    <div class="mb-3 col-6">
+      <label for="age" class="form-label">Age: </label>
+      <input
+        type="text"
+        class="form-control"
+        id="age"
+        formControlName="age"   
+        placeholder="Age"   
+      />
+      <div class="alert alert-danger"
+        *ngIf="userForm.get('age')?.invalid &&
+        userForm.get('age')?.touched &&
+        userForm.get('age')?.errors?.['required']"
+        >
+        Возраст обязателен        
+      </div>
+      <div class="alert alert-danger"
+        *ngIf="userForm.get('age')?.invalid &&
+        userForm.get('age')?.touched &&
+        userForm.get('age')?.errors?.['minRange'] &&
+        !userForm.get('age')?.errors?.['required']"
+        >
+        Значение должно быть больше 1        
+      </div>
+      <div class="alert alert-danger"
+        *ngIf="userForm.get('age')?.invalid &&
+        userForm.get('age')?.touched &&
+        userForm.get('age')?.errors?.['maxRange']"
+        >
+        Значение должно быть не больше 122        
+      </div>
+    </div>
+
+
+    <div class="mb-3 col-6">
+      <label for="site" class="form-label">Site: </label>
+      <input
+        type="text"
+        class="form-control"
+        id="site"
+        formControlName="site"   
+        placeholder="Site"   
+      />
+      <div class="alert alert-danger"
+        *ngIf="userForm.get('site')?.invalid &&
+        userForm.get('site')?.touched &&
+        userForm.get('site')?.errors?.['required']"
+        >
+        Сайт обязателен        
+      </div>
+      <div class="alert alert-danger"
+        *ngIf="userForm.get('site')?.invalid &&
+        (userForm.get('site')?.touched || userForm.get('site')?.dirty) &&
+        userForm.get('site')?.errors?.['urlNotAllowed']"
+        >
+        Неправильный адрес сайта        
+      </div>
+      <div class="alert alert-danger"
+        *ngIf="userForm.get('site')?.['pending']"
+        >
+        Выполняется проверка
+        <img src="assets/download.gif" alt="Wait" class="download"> 
+      </div>
+    </div>
+    
+
+
+    <div class="mb-3 col-6">
+      <label for="secondSite" class="form-label">Site: </label>
+      <input
+        type="text"
+        class="form-control"
+        id="secondSite"
+        formControlName="secondSite"   
+        placeholder="Second Site"   
+      />
+      <div class="alert alert-danger"
+        *ngIf="userForm.get('secondSite')?.invalid &&
+        userForm.get('secondSite')?.touched &&
+        userForm.get('secondSite')?.errors?.['required']"
+        >
+        Сайт обязателен        
+      </div>
+      <div class="alert alert-danger"
+        *ngIf="userForm.get('secondSite')?.invalid &&
+        (userForm.get('secondSite')?.touched || userForm.get('secondSite')?.dirty) &&
+        userForm.get('secondSite')?.errors?.['urlNotAllowed']"
+        >
+        Неправильный адрес сайта        
+      </div>
+      <div class="alert alert-danger"
+        *ngIf="userForm.get('secondSite')?.['pending']"
+        >
+        Выполняется проверка
+        <img src="assets/download.gif" alt="Wait" class="download"> 
+      </div>
+    </div>
+
+    <button type="submit">Submit</button>
+
+  </form>
+</div>
+
+<!-- <button (click)="ex()">Try It</button> -->
+

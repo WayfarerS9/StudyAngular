@@ -1,0 +1,12 @@
+<h2>
+  {{ header }}
+  <span (click)="showHide()">
+    <span *ngIf="isVisible">Скрыть</span>
+    <span *ngIf="!isVisible">Показать</span>
+  </span>
+</h2>
+<div *ngIf="isVisible">
+  <ng-content>
+    <!-- Внутри этого тега будет содержимое тега родительского компонента -->
+  </ng-content>
+</div>

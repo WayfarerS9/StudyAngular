@@ -1,0 +1,11 @@
+<p>ng-if works!</p>
+<div *ngIf="isShown; then thenBlock else elseBlock"></div>
+
+<ng-template #thenBlock>
+    <p>Then</p>
+</ng-template>
+
+<ng-template #elseBlock>
+    <p>Else</p>
+</ng-template>
+<button (click)='changeBlock()'>ChangeBlock</button>

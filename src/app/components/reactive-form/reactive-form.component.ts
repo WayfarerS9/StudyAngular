@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { FormGroup, FormControl, Validators, RequiredValidator} from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-form',
@@ -7,15 +7,11 @@ import { FormGroup, FormControl, Validators} from '@angular/forms';
   styleUrls: ['./reactive-form.component.css']
 })
 export class ReactiveFormComponent implements OnInit {
-  myForm: FormGroup = new FormGroup({
+  userForm: FormGroup = new FormGroup( {
              
-    "userName": new FormControl("Tom", Validators.required),
-    "userEmail": new FormControl("", [
-      Validators.required, 
-      Validators.email
-    ]),
-    "userPhone": new FormControl("", Validators.pattern("[0-9]{10}")),
-    /* "userCompany": new FormControl() */
+    userName: new FormControl('', [Validators.required]), // первый аргумент - значение по умолчанию, второй - валидаторы. Если их несколько, то перечисляются массивом. Один тоже можно запихнуть в массив
+    password: new FormControl('', [Validators.required, Validators.minLength(10)]),
+    
 });
 
   constructor() { }
@@ -23,8 +19,20 @@ export class ReactiveFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  submit():void {
-    console.log(this.myForm.controls['userPhone'].value)
+  onSubmit():void {
+ 
+
+    console.log(this.userForm.get('password')?.hasError('minlength'))
   }
 
 }
+
+
+
+/* 
+this.userForm.valid // валидность
+this.userForm.value // значение полей
+this.userForm.get('userName')?.hasError('required') // имеет ли ошибки поле с formControlName == userName 
+this.userForm.controls['password'].invalid // имеет ли какую либо ошибку поле с formControlName == userName 
+this.userForm.get('password')?.hasError('minlength') // имеет ли поле с formControlName == userName ошибку по критерию minlength
+*/
