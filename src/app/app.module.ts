@@ -47,6 +47,8 @@ import { SpoilerComponent } from './components/lesson32/spoiler/spoiler.componen
 import { NgIfComponent } from './components/lesson33/ng-if/ng-if.component';
 import { ReactiveForm2Component } from './components/reactive-form2/reactive-form2.component';
 import { ReactiveForm3Component } from './components/reactive-form3/reactive-form3.component';
+import { ObservableComponent } from './components/observable/observable.component';
+import { ExperimentsComponent } from './components/experiments/experiments.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +82,8 @@ import { ReactiveForm3Component } from './components/reactive-form3/reactive-for
     NgIfComponent,
     ReactiveForm2Component,
     ReactiveForm3Component,
+    ObservableComponent,
+    ExperimentsComponent,
   ],
   imports: [
     BrowserModule,

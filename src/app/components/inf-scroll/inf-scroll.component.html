@@ -1,9 +1,10 @@
-<button (click)="ex()">try</button>
 <h1>
 	Lazy loaded infinite scroller
 </h1>
+<p>Length of list: <strong>{{boxes.length}}</strong> </p>
 <div class="container">
-	<div *ngFor="let box of boxes" class="boxes" #cont2>
+	<div *ngFor="let box of boxes; let i = index" class="boxes" #content>
+		<span><strong>{{i+1}} divbox</strong></span>
 	</div>
 	<div class="addDownload"></div>
 </div>

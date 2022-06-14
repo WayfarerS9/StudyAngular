@@ -70,9 +70,9 @@ export class ReactiveForm2Component implements OnInit {
     this.userForm.valueChanges.subscribe( () => this.onValueChanged())
   }
 
-/*   ex() {
-    console.log(this.formErrors)
-  } */
+  ex() {
+    console.log(this.userForm.value)
+  }
 
    
   private onValueChanged() {

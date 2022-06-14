@@ -13,6 +13,8 @@ import { BindClassComponent } from './components/lesson33/bind-class/bind-class.
 import { Lesson32Component } from './components/lesson32/lesson32.component';
 import { ReactiveForm2Component } from './components/reactive-form2/reactive-form2.component';
 import { ReactiveForm3Component } from './components/reactive-form3/reactive-form3.component';
+import { ObservableComponent } from './components/observable/observable.component';
+import { ExperimentsComponent } from './components/experiments/experiments.component';
 
 
 const routes: Routes = [
@@ -30,6 +32,8 @@ const routes: Routes = [
   { path: 'lesson32', component: Lesson32Component},
   { path: 'lesson33', component: Lesson33Component},
   { path: 'bindClass', component: BindClassComponent},
+  { path: 'observable', component: ObservableComponent},
+  { path: 'experiments', component: ExperimentsComponent},
   
 ];
 
