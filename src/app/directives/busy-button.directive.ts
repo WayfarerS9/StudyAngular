@@ -1,9 +1,7 @@
 import {
   ComponentFactoryResolver,
   Directive,
-  ElementRef,
   Input,
-  Renderer2,
   TemplateRef,
   ViewContainerRef,
 } from '@angular/core';
@@ -23,8 +21,6 @@ export class BusyButtonDirective {
     private componentFactoryResolver: ComponentFactoryResolver,
     private templateRef: TemplateRef<any>,
     private viewContainer: ViewContainerRef,
-    private renderer: Renderer2,
-    private elementRef: ElementRef
     ) {}
 
     @Input()
@@ -44,17 +40,13 @@ export class BusyButtonDirective {
     }
 
   @Input() set appBusyButton(condition: boolean) {
-    if (!!condition !== this.#isSpinning) {
+    if (condition !== this.#isSpinning) {
       this.#spinner = null;      
       this.viewContainer.clear();
       this.#isSpinning = condition;
-      if (!condition) {
-        this.renderer.setStyle(this.elementRef.nativeElement.parentElement.parentElement, 'width', 'auto');
-        this.renderer.setStyle(this.elementRef.nativeElement.parentElement.parentElement, 'height', 'auto');        
+      if (!condition) {              
         this.viewContainer.createEmbeddedView(this.templateRef);
-      } else if (condition) {
-        this.renderer.setStyle(this.elementRef.nativeElement.parentElement.parentElement, 'width', window.getComputedStyle(this.elementRef.nativeElement.parentElement.parentElement).width);
-        this.renderer.setStyle(this.elementRef.nativeElement.parentElement.parentElement, 'height', window.getComputedStyle(this.elementRef.nativeElement.parentElement.parentElement).height);
+      } else if (condition) {       
         this.addSpinner();
       }
     }

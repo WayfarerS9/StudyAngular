@@ -49,6 +49,15 @@ import { ReactiveForm2Component } from './components/reactive-form2/reactive-for
 import { ReactiveForm3Component } from './components/reactive-form3/reactive-form3.component';
 import { ObservableComponent } from './components/observable/observable.component';
 import { ExperimentsComponent } from './components/experiments/experiments.component';
+import { SelectComponent } from './components/select/select.component';
+import { MatSelectModule } from '@angular/material/select';
+import { DiffComponent } from './components/diff/diff.component';
+import { NgStyleClassComponent } from './components/ng-style-class/ng-style-class.component';
+import { InputOutputComponent } from './components/input-output/input-output.component';
+import { InputOutputFatherComponent } from './components/input-output/input-output-father/input-output-father.component';
+import { NgTemplateComponent } from './components/ng-template/ng-template.component';
+import { NgTemplateDaughterComponent } from './components/ng-template/ng-template-daughter/ng-template-daughter.component';
+import { TablesComponent } from './components/tables/tables.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +93,14 @@ import { ExperimentsComponent } from './components/experiments/experiments.compo
     ReactiveForm3Component,
     ObservableComponent,
     ExperimentsComponent,
+    SelectComponent,
+    DiffComponent,
+    NgStyleClassComponent,
+    InputOutputComponent,
+    InputOutputFatherComponent,
+    NgTemplateComponent,
+    NgTemplateDaughterComponent,
+    TablesComponent,
   ],
   imports: [
     BrowserModule,
@@ -101,6 +118,7 @@ import { ExperimentsComponent } from './components/experiments/experiments.compo
     InfiniteScrollModule,
     ScrollingModule,
     MatProgressSpinnerModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -15,6 +15,12 @@ import { ReactiveForm2Component } from './components/reactive-form2/reactive-for
 import { ReactiveForm3Component } from './components/reactive-form3/reactive-form3.component';
 import { ObservableComponent } from './components/observable/observable.component';
 import { ExperimentsComponent } from './components/experiments/experiments.component';
+import { SelectComponent } from './components/select/select.component';
+import { DiffComponent } from './components/diff/diff.component';
+import { NgStyleClassComponent } from './components/ng-style-class/ng-style-class.component';
+import { InputOutputComponent } from './components/input-output/input-output.component';
+import { NgTemplateComponent } from './components/ng-template/ng-template.component';
+import { TablesComponent } from './components/tables/tables.component';
 
 
 const routes: Routes = [
@@ -34,6 +40,12 @@ const routes: Routes = [
   { path: 'bindClass', component: BindClassComponent},
   { path: 'observable', component: ObservableComponent},
   { path: 'experiments', component: ExperimentsComponent},
+  { path: 'select', component: SelectComponent},
+  { path: 'diff', component: DiffComponent},
+  { path: 'ngStyleClass', component: NgStyleClassComponent},
+  { path: 'inputOutput', component: InputOutputComponent},
+  { path: 'ngTemplate', component: NgTemplateComponent},
+  { path: 'tables', component: TablesComponent},
   
 ];
 

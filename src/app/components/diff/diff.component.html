@@ -1,0 +1,74 @@
+1. As может использоваться для достижения правильной типизации при присвоении -->
+<input type="text" (input)="onInput($event)">
+<br>
+<br>
+<br>
+
+2. Из HTML можно передавать переменные, обозначенные в TS -->
+<input type="text" (input)="onInput2(testArray)">
+<br>
+<br>
+<br>
+
+3. При использовании двусторнней связки [(ngModel)] необходимо добавить модуль FormsModule -->
+
+
+4. Значения переменной из TS можно менять непосредственно в шаблоне -->
+<div *ngIf="exp" class="red block"></div>
+<div *ngIf="!exp" class="blue block"></div>
+<button (click)="exp = !exp">Toogle</button>
+<br>
+<br>
+<br>
+
+5. * в структурных директивах меняет шаблон. Менять шаблон можно так:
+#elseCase - это шаблонная переменная. -->
+<div class="red block" *ngIf="exp; else: elseCase">Red</div>
+<button (click)="exp = !exp">Toogle</button>
+<ng-template #elseCase>
+    <div class="blue block">Blue</div>
+</ng-template>
+<br>
+<br>
+<br>
+
+6. as в шаблоне может использоваться для сохранения значения в переменную: -->
+<ul *ngIf="deepObject?.user as person">
+    <li>Name is: {{person.name}} {{person.secondName}}</li>
+</ul>
+<br>
+<br>
+<br>
+
+7. Директива ngFor предоставляет возможность использовать индекс: -->
+<p *ngFor="let user of users; index as i">
+    {{i+1}}: {{user.name + ' ' + user.secondName}}
+</p>
+<br>
+<br>
+<br>
+
+8. Директива ngFor отслеживает ссылки и перерисовывает ДОМ только тогда, когда ссылки меняются.
+При этом можно сделать так, чтобы даже при изменении ссылок, перерисовка не осуществлялась. Для
+этого Ангулару нужно указать, что у объекта есть уникальное свойство например ID, с которым нужно
+связать тег (вместо ссылки). Это осуществляется при помощи метода, который объявляется при помощи TrackBy:
+<p *ngFor="let user of users; index as i; trackBy: trackBy">
+    {{i+1}}: {{user.name + ' ' + user.secondName}}
+</p>
+<br>
+<br>
+<br>
+
+9. [ngSwitch] с ngFor работает так: Добавляем атрибут [ngSwitch]="user.tem" и в зависимости от указанного результата 
+рисуем его или нет. При *ngSwitchDefault рисуем полюбому
+<div *ngFor="let user of users; index as i; trackBy: trackBy" [ngSwitch]="user.tem">
+    <p *ngSwitchCase="!'unknown'">{{i+1}}: {{user.name + ' ' + user.secondName}}</p>    
+    <p *ngSwitchCase="'unknown'">{{i+1}}: {{user.name + ' ' + user.secondName}}</p>    
+    <p *ngSwitchCase="'unknown'">{{i+1}}: {{user.name + ' ' + user.secondName}}</p>    
+    <p *ngSwitchCase="'bold'">{{i+1}}: {{user.name + ' ' + user.secondName}}</p>    
+    <p *ngSwitchDefault>{{i+1}}: {{user.name + ' ' + user.secondName}}</p>    
+  
+</div>
+<br>
+<br>
+<br>

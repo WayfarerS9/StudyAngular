@@ -1,0 +1,53 @@
+<h1>{{title}}</h1>
+
+<p>
+    Компонент <b>InputOutputFatherComponent</b> является дочерним по отношению к <b>InputOutputComponent</b>.
+</p>
+<p>
+    Его шаблон выводится в шаблоне <b>InputOutputComponent</b>. В компоненте <b>InputOutputFatherComponent</b>
+    определена перемнная <span class="blue">title: string = 'Hello world'.toUpperCase()</span>, которая
+    одновременно интерполируется в шаблон. И вроде как в шаблоне должно отобразиться <span class="blue">
+    Hello world</span>, но в шаблоне отображается <span class="blue">new title</span>.
+</p>
+<p>
+    Такое поведение обусловлено тем, что в селектор дочернего компонента передано значение title: 
+    <b>&lt;app-input-output-father title="new title"&gt;&lt;/app-input-output-father&gt;</b>
+</p>
+<p>
+    Кроме того в TS дочернего компонента переменная title помечена декоратором @Input:
+    <span class="blue">@Input()title: string = 'Hello world'.toUpperCase()</span>
+</p>
+<p>
+    Проще говоря: прокинули переменную в селектор и после этого можно пользоваться данной переменной в компоненте,
+    в селектор которого закинули переменную, НО!!! только после ее внесения в TS компонента при помощи
+    декоратора @Input.
+</p>
+<p>
+    Стоит отметить, что значение Инпутовской переменной меняется динамически. В самом низу страницы кнопка,
+    которая меняет значение переменной в родительском компоненте
+</p>
+<p>
+    Вместе с тем, имеется возможность передать информацию из дочеренего компонента в родительский. Скорее
+    даже не информацию, а событие. Деалется это при помощи EventEmitter. Ниже кнопка, которая испускает событие
+    из дочернего компонента, это событие отлавливается в родителе и обрабатывается.
+    <button (click)="onSendMessage()">Send message</button>  
+</p>
+<p>
+    Также с эмитом можно передавать какие-либо значения. 
+    Эмитер объявляется так: <span class="blue">@Output()
+    sendMessageWithData = new EventEmitter&lt;string&gt;()</span>
+    При этом <b>&lt;string&gt;</b> это дженерик. Это означает, что в эмитер будут эмититься только строки
+    <button (click)="onSendMessageWithData('sended message')">Send message with data</button>
+</p>
+<p>
+    В компоненте также реализован двусторонний байндинг между компонентами.
+    <button (click)="counterChange.emit(counter + 1)">+</button>
+    <span>{{counter}}</span>
+    <button (click)="counterChange.emit(counter - 1)">-</button>
+    <br>
+    Для этого нужно в дочернем компоненте указать input и output.
+    output и input должны быть одноименны и отличаться наличием слова Change - counter и counterChange.
+    После этого, в родительском шаблоне, в селекторе дочернего компонента достаточно указать [(counter)]="age".
+</p>
+
+

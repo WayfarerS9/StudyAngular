@@ -1,18 +1,81 @@
-<p>Autocomplete works!</p>
-<form class="example-form">
+<p>Autocomplete!</p>
+<form class="example-form" [formGroup]="myForm">
   <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Number</mat-label>
+    <!-- matInput - Директива для применения ангуларовских материалов к инпуту -->
+
+    <!-- [formControl] - тоже самое, что formControlName. НО!!! При использовании [formControl]
+    обращаться к контроллеру нужно так: "myForm.controls.firstName".
+    При использовании formControlName, к контроллеру нужно обратиться так: "firstName".
+    После добавления этого атрибута в шаблон и создания в ts new FormControl(), можно отслеживать изменения-->
+
+    <!-- Значение, которое будет отображаться в инпуте после выбора опции, отражается в теге mat-option,
+    атрибуте [value]="option.name". Оно же передается в контроллер -->
+
+    <mat-label>Persons</mat-label>
     <input type="text"
           placeholder="Pick one"
-          aria-label="Number"
-          matInput
-          [formControl]="myControl"
-          [matAutocomplete]="auto">
+          matInput 
+          formControlName="persons"
+          [matAutocomplete]="auttto"
+          >
          
-    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-        {{option}}
+    <mat-autocomplete autoActiveFirstOption #auttto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option.name">
+        {{option.name}}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
+  <br>
+
+
+
+  <mat-form-field appearance="fill">
+    <mat-label>Select a class</mat-label>
+    <mat-select 
+    #matSelect
+      formControlName="types"
+    >
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let class of classes" [value]="class">{{class}}</mat-option>
+      
+    </mat-select>
+  </mat-form-field>
+  <br>
+
+
+
+
+
+
+  <mat-form-field appearance="fill">
+    <mat-label>Select a role</mat-label>
+    <mat-select 
+    #matSelect
+      formControlName="roles"
+    >
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let role of roles" [value]="role.id">{{role.roleName}}</mat-option>
+      
+    </mat-select>
+  </mat-form-field>
+  <br>
+
+
+
+
+
+  <mat-form-field appearance="fill">
+    <mat-label>Select a boss</mat-label>
+    <mat-select 
+      formControlName="bosses"
+      multiple="true"
+    >
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let boss of bosses" [value]="boss.id">{{boss.bossName}}</mat-option>
+      
+    </mat-select>
+  </mat-form-field>
+
 </form>
+
+<button (click)="showInf(matSelect)">ShowInf</button>

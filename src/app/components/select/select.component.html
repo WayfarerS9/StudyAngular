@@ -1,0 +1,33 @@
+<p>select works!</p>
+<mat-form-field appearance="fill">
+    <mat-label>Persons</mat-label>
+    <mat-select [value]="selected" >
+
+        <!-- Привязать можно и так [value]="persons[1].id"
+                             и так [(ngModel)]="persons[1].id
+                             и так [value]="selected" - если в selected будет сслыка на id элемента массива или напрямую цифрами 
+        указан  существующий id. При этом двусторнняя связка не будет менять значение переменной в ts  -->
+
+        <!-- [disabled]="true" либо просто disabled внутри mat-select сделает его недоступным. Их применение к option, сделает
+        недоступным конкретный option. Но в случае с *ngFor в этом нет смысла -->
+
+        <!-- <mat-option>None</mat-option> делает опцию для ресета -->
+        
+        <!-- Также можно делать группировки опциев при помощи тега optgroup. Подробнее - в документации -->
+
+        <!-- multiple позволяет реализовать возможность множественного выбора, но тогда None работать не будет -->
+
+
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let person of persons" [value]="person.id">
+        {{person.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+<br>
+
+  <button (click)="showInf()">Experiment</button>
+
+
+
+  

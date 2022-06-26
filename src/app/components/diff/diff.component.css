@@ -1,0 +1,12 @@
+.block {
+    width: 100px;
+    height: 30px;
+}
+
+.red {
+    background-color: red;
+}
+
+.blue {
+    background-color: blue;
+}

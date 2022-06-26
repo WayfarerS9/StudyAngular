@@ -1,0 +1,7 @@
+<app-input-output-father
+  (sendMessage)="getEmit()"
+  (sendMessageWithData)="getEmitWithData($event)"
+  [title]="passingVar"
+  [(counter)]="age"
+></app-input-output-father>
+<button (click)="trigger()">Change Value</button>

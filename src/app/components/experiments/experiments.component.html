@@ -5,31 +5,11 @@
     <div class="third common">
         third
     </div>
-    <div class="fourth common">
-        fourth<br>
-        fourth<br>
-        fourth<br>
-        fourth<br>
-        fourth<br>
-        fourth<br>
-        fourth<br>
-        fourth<br>
-        fourth<br>
-        fourth<br>
-        fourth<br>
-        fourth<br>
-        fourth<br>
-        fourth<br>
-        fourth<br>
-        fourth<br>
-        fourth<br>
-        fourth<br>
-        fourth<br>
-        fourth<br>
-        fourth<br>
-        fourth<br>
-        fourth<br>
-        fourth<br>
-        fourth<br>
+    <div class="fourth common" (scroll)="ex($event)">
+        <p *ngFor="let item of items">{{item}}</p>        
     </div>
 </div>
+
+
+
+

@@ -1,0 +1,22 @@
+При добавлении атрибута [title]="'greet' + 5", в кавычках после =, пишется TS код, могут использоваться 
+переменные из TS
+<p title="greet">GREETINGS</p>
+<p title="greet + 5">GREETINGS</p>
+<p [title]="'greet' + 5" draggable="true">GREETINGS</p>
+<br>
+<br>
+<br>
+Класс можно прокинуть в тег так: [class.red]='true'. Добавлять можно много классов
+<p [class.red]="true">p with class red</p>
+<p [class.blue]="true">p with class blue</p>
+<br>
+<br>
+<br>
+Стили. Стили можно добавить так:
+<br>
+[style.background-color]="'red'"
+<br>
+[style]="'background-color: blue; width: 300px'"
+<p [style.background-color]="'red'">p with style red</p>
+<p [style.background-color]="'blue'">p with style blue</p>
+<p [style]="'background-color: blue; width: 300px'">p with style blue and width: 300px</p>
