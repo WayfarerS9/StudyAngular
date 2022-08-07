@@ -1,0 +1,15 @@
+<p>rxjs works!</p>
+
+<mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Try RxJS</mat-label>
+    <input matInput placeholder="Type smth" value="Sushi" #testInput>
+</mat-form-field>
+
+
+<mat-form-field appearance="fill">
+    <mat-label>Different locale</mat-label>
+    <input matInput [matDatepicker]="dp">
+    <mat-hint>DD/MM/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+    <mat-datepicker #dp></mat-datepicker>
+  </mat-form-field>
