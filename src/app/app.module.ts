@@ -25,7 +25,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
+import { MyDateAdapter, APP_DATE_FORMATS } from './adapters/date.adapter';
 import { AdvanceRoutComponent } from './components/advance-rout/advance-rout.component';
 import { FirstChildRoutComponent } from './components/advance-rout/first-child-rout/first-child-rout.component';
 import { SecondChildRoutComponent } from './components/advance-rout/second-child-rout/second-child-rout.component';
@@ -33,17 +34,17 @@ import { DateComponent } from './components/date/date.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
 
-const MY_FORMATS = {
+/* const MY_FORMATS = {
   parse: {
     dateInput: 'DD MMMM YYYY',
   },
   display: {
-    dateInput: 'DD MMMM YYYY',
+    dateInput: 'DD.MM.YYYY',
     monthYearLabel: 'MMMM YYYY',
     dateA11yLabel: 'LL',
     monthYearA11yLabel: 'MMMM YYYY',
   },
-};
+}; */
 
 
 @NgModule({
@@ -82,8 +83,10 @@ const MY_FORMATS = {
     MatMomentDateModule,
   ],
   providers: [
-    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS }
+    {provide: DateAdapter, useClass: MyDateAdapter},
+    {provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS},
   ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
